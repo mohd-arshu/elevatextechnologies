@@ -34,7 +34,7 @@ const Navigation = () => {
             <Tv className="w-5 h-5 text-primary-foreground" />
           </div>
           <span className="font-display text-xl font-700 tracking-tight">
-            Stream<span className="text-gradient">Cloud</span>
+            Elevate<span className="text-gradient">X Technologies</span>
           </span>
         </a>
 
