@@ -19,7 +19,7 @@ const Footer = () => {
                 <Tv className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="font-display text-xl font-bold">
-                Stream<span className="text-gradient">Cloud</span>
+                Elevate<span className="text-gradient">X Technologies</span>
               </span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
@@ -63,7 +63,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © 2025 StreamCloud Inc. All rights reserved.
+            © 2025 ElevateX Technologies. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />

@@ -51,7 +51,7 @@ const CTASection = () => {
             {/* Contact details */}
             <div className="space-y-4">
               {[
-                { icon: Mail, label: "Email Us", value: "hello@streamcloud.io" },
+                { icon: Mail, label: "Email Us", value: "hello@elevatex.io" },
                 { icon: Phone, label: "Call Us", value: "+1 (800) 555-0198" },
                 { icon: MapPin, label: "Headquarters", value: "San Francisco, CA · Dubai · Singapore" },
               ].map((item, i) => (
