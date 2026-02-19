@@ -94,8 +94,8 @@ const HeroSection = () => {
             </div>
             {/* Floating stat card */}
             <div className="absolute -top-6 -right-6 bg-card border border-border rounded-xl p-4 shadow-elevated">
-              <div className="text-2xl font-display font-bold text-gradient">500+</div>
-              <div className="text-xs text-muted-foreground mt-0.5">Channels Managed</div>
+              <div className="text-2xl font-display font-bold text-gradient">10K+</div>
+              <div className="text-xs text-muted-foreground mt-0.5">Screens Deployed</div>
             </div>
           </div>
         </div>

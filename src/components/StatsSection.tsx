@@ -1,9 +1,8 @@
 const StatsSection = () => {
   const stats = [
-    { value: "500+", label: "Channels Supported" },
     { value: "99.9%", label: "Uptime SLA" },
-    { value: "150+", label: "Countries Served" },
-    { value: "10M+", label: "End Users Reached" },
+    { value: "All Over GCC", label: "Covered" },
+    { value: "10K+", label: "Screens Deployed & Still Counting" },
   ];
 
   return (
