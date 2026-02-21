@@ -61,13 +61,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        cyan: {
-          DEFAULT: "hsl(var(--cyan))",
+        yellow: {
+          DEFAULT: "hsl(var(--yellow))",
+          dark: "hsl(var(--yellow-dark))",
         },
-        navy: {
-          DEFAULT: "hsl(var(--navy))",
-          card: "hsl(var(--navy-card))",
-          surface: "hsl(var(--navy-surface))",
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
         },
       },
       borderRadius: {
@@ -81,8 +80,6 @@ export default {
         "gradient-card": "var(--gradient-card)",
       },
       boxShadow: {
-        "glow-cyan": "var(--glow-cyan)",
-        "glow-blue": "var(--glow-blue)",
         "card": "var(--shadow-card)",
         "elevated": "var(--shadow-elevated)",
       },

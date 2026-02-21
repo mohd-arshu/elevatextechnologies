@@ -6,13 +6,9 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden hero-bg pt-20">
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-40" />
-
-      {/* Glow orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 glow-orb rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, hsl(210 100% 60% / 0.12) 0%, transparent 70%)" }}
+      {/* Subtle pattern */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{ backgroundImage: "radial-gradient(hsl(45 95% 50% / 0.06) 1px, transparent 1px)", backgroundSize: "40px 40px" }}
       />
 
       <div className="container mx-auto relative z-10">
@@ -52,7 +48,7 @@ const HeroSection = () => {
             <div className="flex flex-wrap gap-4 pt-2">
               <a
                 href="#contact"
-                className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-glow-cyan hover:opacity-90 transition-all hover:scale-105"
+                className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-elevated hover:opacity-90 transition-all hover:scale-105"
               >
                 Start Free Trial
                 <ArrowRight className="w-4 h-4" />
@@ -68,7 +64,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right: Hero image */}
-          <div className="relative animate-float hidden lg:block">
+          <div className="relative hidden lg:block">
             <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-elevated">
               <img
                 src={heroBanner}

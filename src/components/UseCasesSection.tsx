@@ -69,8 +69,7 @@ const UseCasesSection = () => {
           {useCases.map((uc, i) => (
             <div
               key={i}
-              className={`group relative p-8 rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br ${uc.gradient}`}
-              style={{ background: `linear-gradient(135deg, hsl(var(--navy-card)) 0%, hsl(var(--navy-surface)) 100%)` }}
+              className="group relative p-8 rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 bg-card"
             >
               <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
                 <uc.icon className="w-7 h-7 text-primary" />
