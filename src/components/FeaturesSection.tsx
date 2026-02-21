@@ -80,7 +80,7 @@ const FeaturesSection = () => {
   return (
     <section id="features" className="py-24 relative">
       {/* Background decoration */}
-      <div className="absolute inset-0 grid-pattern opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 opacity-20 pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
         {/* Header */}
@@ -103,7 +103,7 @@ const FeaturesSection = () => {
           {features.map((feature, i) => (
             <div
               key={i}
-              className="group relative p-6 rounded-2xl card-gradient border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-glow-cyan hover:-translate-y-1"
+              className="group relative p-6 rounded-2xl card-gradient border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-elevated hover:-translate-y-1"
             >
               {/* Tag */}
               <span className="inline-block px-2.5 py-1 rounded-md bg-primary/10 text-primary text-xs font-semibold mb-4">

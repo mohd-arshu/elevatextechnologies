@@ -30,7 +30,7 @@ const Navigation = () => {
       <div className="container mx-auto flex items-center justify-between py-4">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          <div className="relative flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-primary animate-pulse-glow">
+          <div className="relative flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-primary">
             <Tv className="w-5 h-5 text-primary-foreground" />
           </div>
           <span className="font-display text-xl font-700 tracking-tight">
@@ -61,7 +61,7 @@ const Navigation = () => {
           </a>
           <a
             href="#contact"
-            className="px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity shadow-glow-cyan"
+            className="px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity shadow-elevated"
           >
             Get Started
           </a>

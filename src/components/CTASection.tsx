@@ -23,11 +23,7 @@ const CTASection = () => {
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute inset-0 grid-pattern opacity-20 pointer-events-none" />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, hsl(195 100% 50% / 0.08) 0%, transparent 70%)" }}
-      />
+      <div className="absolute inset-0 opacity-20 pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -145,7 +141,7 @@ const CTASection = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-glow-cyan hover:opacity-90 transition-all hover:scale-[1.01]"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-elevated hover:opacity-90 transition-all hover:scale-[1.01]"
               >
                 Request Your Free Demo
                 <ArrowRight className="w-4 h-4" />
