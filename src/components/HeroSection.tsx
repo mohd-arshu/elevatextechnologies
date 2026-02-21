@@ -1,8 +1,39 @@
+import { useState, useEffect, useRef } from "react";
 import heroBanner from "@/assets/hero-banner.jpg";
 import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
 
+const useCountUp = (target: number, duration = 2000) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          const start = performance.now();
+          const step = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(eased * target));
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return { count, ref };
+};
+
 const HeroSection = () => {
   const badges = ["99.9% Uptime SLA", "4K Ultra HD Streaming", "Global CDN"];
+  const { count, ref: countRef } = useCountUp(10000, 2500);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden hero-bg pt-20">
@@ -89,8 +120,10 @@ const HeroSection = () => {
               </div>
             </div>
             {/* Floating stat card */}
-            <div className="absolute -top-6 -right-6 bg-card border border-border rounded-xl p-4 shadow-elevated">
-              <div className="text-2xl font-display font-bold text-gradient">10K+</div>
+            <div ref={countRef} className="absolute -top-6 -right-6 bg-card border border-border rounded-xl p-4 shadow-elevated">
+              <div className="text-2xl font-display font-bold text-gradient">
+                {count >= 10000 ? "10K+" : count.toLocaleString()}
+              </div>
               <div className="text-xs text-muted-foreground mt-0.5">Screens Deployed</div>
             </div>
           </div>
