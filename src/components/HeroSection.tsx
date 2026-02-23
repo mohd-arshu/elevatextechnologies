@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import heroBanner from "@/assets/hero-banner.jpg";
+import stageDemo from "@/assets/stage-demo.png";
+import stageNetwork from "@/assets/stage-network.png";
+import stageTesting from "@/assets/stage-testing.png";
+import stageDeployment from "@/assets/stage-deployment.png";
 import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
 
 const useCountUp = (target: number, duration = 2000) => {
@@ -31,12 +35,19 @@ const useCountUp = (target: number, duration = 2000) => {
   return { count, ref };
 };
 
+const projectStages = [
+  { step: "01", title: "Demo", description: "Live product walkthrough", image: stageDemo },
+  { step: "02", title: "Network Assessment", description: "Infrastructure review", image: stageNetwork },
+  { step: "03", title: "Testing", description: "End-to-end validation", image: stageTesting },
+  { step: "04", title: "Deployment", description: "Go live with support", image: stageDeployment },
+];
+
 const HeroSection = () => {
   const badges = ["99.9% Uptime SLA", "4K Ultra HD Streaming", "Global CDN"];
   const { count, ref: countRef } = useCountUp(10000, 2500);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden hero-bg pt-20">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden hero-bg pt-20">
       {/* Subtle pattern */}
       <div className="absolute inset-0 opacity-30 pointer-events-none"
         style={{ backgroundImage: "radial-gradient(hsl(45 95% 50% / 0.06) 1px, transparent 1px)", backgroundSize: "40px 40px" }}
@@ -46,12 +57,6 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Copy */}
           <div className="space-y-8 animate-fade-up">
-            {/* Pill badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Cloud-Powered Media Solutions
-            </div>
-
             <h1 className="font-display text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight">
               The Future of{" "}
               <span className="text-gradient">IPTV</span> &{" "}
@@ -60,9 +65,9 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Deliver flawless live TV, video-on-demand, and dynamic digital signage at scale — 
-              powered by our enterprise cloud infrastructure. Built for operators, hotels, 
-              enterprises, and broadcasters.
+              Transform your hospitality and enterprise spaces with seamless live TV, 
+              on-demand content, and intelligent digital signage — all managed from a 
+              single cloud platform. Trusted by hotels, operators, and broadcasters worldwide.
             </p>
 
             {/* Feature badges */}
@@ -81,7 +86,7 @@ const HeroSection = () => {
                 href="#contact"
                 className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-elevated hover:opacity-90 transition-all hover:scale-105"
               >
-                Start Free Trial
+                Book Your Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
@@ -126,6 +131,30 @@ const HeroSection = () => {
               </div>
               <div className="text-xs text-muted-foreground mt-0.5">Screens Deployed</div>
             </div>
+          </div>
+        </div>
+
+        {/* Project Stages */}
+        <div className="mt-20 pt-12 border-t border-border/50">
+          <h3 className="font-display text-lg font-semibold text-center mb-8 tracking-tight">
+            Your Journey With Us
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {projectStages.map((stage, i) => (
+              <div key={stage.step} className="relative text-center space-y-3 group">
+                <div className="w-16 h-16 mx-auto rounded-xl overflow-hidden border border-border/50 bg-card shadow-sm group-hover:shadow-elevated transition-shadow">
+                  <img src={stage.image} alt={stage.title} className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <span className="text-xs font-semibold text-primary">{stage.step}</span>
+                  <h4 className="font-display text-sm font-semibold mt-0.5">{stage.title}</h4>
+                  <p className="text-xs text-muted-foreground mt-1">{stage.description}</p>
+                </div>
+                {i < projectStages.length - 1 && (
+                  <div className="hidden md:block absolute top-8 -right-3 w-6 h-px bg-border" />
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
