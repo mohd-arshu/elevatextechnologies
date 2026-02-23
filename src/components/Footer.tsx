@@ -1,4 +1,4 @@
-import { Tv, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Twitter, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   const links = {
@@ -14,14 +14,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <Tv className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="font-display text-xl font-bold">
-                Elevate<span className="text-gradient">X Technologies</span>
-              </span>
-            </div>
+            <span className="font-display text-xl font-bold">
+              Elevate<span className="text-gradient">X Technologies</span>
+            </span>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               Enterprise cloud infrastructure for IPTV and digital signage — 
               delivering media experiences that scale.
