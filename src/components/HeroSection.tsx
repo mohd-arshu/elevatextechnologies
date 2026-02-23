@@ -44,7 +44,8 @@ const projectStages = [
 
 const HeroSection = () => {
   const badges = ["99.9% Uptime SLA", "4K Ultra HD Streaming", "Global CDN"];
-  const { count, ref: countRef } = useCountUp(10000, 2500);
+  const { count: screenCount, ref: screenRef } = useCountUp(10000, 2500);
+  const { count: projectCount, ref: projectRef } = useCountUp(30, 2000);
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden hero-bg pt-20">
@@ -105,7 +106,7 @@ const HeroSection = () => {
               <img
                 src={heroBanner}
                 alt="Cloud IPTV and Digital Signage Platform"
-                className="w-full object-cover"
+                className="w-full h-[420px] object-cover"
               />
               {/* Glass overlay badge */}
               <div className="absolute bottom-6 left-6 right-6">
@@ -124,12 +125,18 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-            {/* Floating stat card */}
-            <div ref={countRef} className="absolute -top-6 -right-6 bg-card border border-border rounded-xl p-4 shadow-elevated">
+            {/* Floating stat cards */}
+            <div ref={screenRef} className="absolute -top-6 -right-6 bg-card border border-border rounded-xl p-4 shadow-elevated">
               <div className="text-2xl font-display font-bold text-gradient">
-                {count >= 10000 ? "10K+" : count.toLocaleString()}
+                {screenCount >= 10000 ? "10K+" : screenCount.toLocaleString()}
               </div>
               <div className="text-xs text-muted-foreground mt-0.5">Screens Deployed</div>
+            </div>
+            <div ref={projectRef} className="absolute -bottom-6 -left-6 bg-card border border-border rounded-xl p-4 shadow-elevated">
+              <div className="text-2xl font-display font-bold text-gradient">
+                {projectCount >= 30 ? "30+" : projectCount.toString()}
+              </div>
+              <div className="text-xs text-muted-foreground mt-0.5">Projects Completed</div>
             </div>
           </div>
         </div>
