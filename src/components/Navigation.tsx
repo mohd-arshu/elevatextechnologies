@@ -13,20 +13,17 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { label: "Solutions", href: "#solutions" },
-    { label: "Features", href: "#features" },
-    { label: "Use Cases", href: "#use-cases" },
+    { label: "Solutions", href: "/solutions" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "#contact" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-elevated"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-elevated"
+        : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto flex items-center justify-between py-4">
         {/* Logo */}
@@ -37,7 +34,7 @@ const Navigation = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 ml-auto mr-8">
           {navLinks.map((link) =>
             link.href.startsWith("/") ? (
               <Link
@@ -61,12 +58,6 @@ const Navigation = () => {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <Link
-            to="/sign-in"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Sign In
-          </Link>
           <a
             href="#contact"
             className="px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity shadow-elevated"

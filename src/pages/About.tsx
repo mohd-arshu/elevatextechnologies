@@ -49,8 +49,10 @@ const About = () => {
               Built on <span className="text-gradient">Trust</span>, Driven by <span className="text-gradient">Innovation</span>
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We empower hotels, enterprises, and broadcasters with cloud-native IPTV and digital signage 
-              platforms that are reliable, scalable, and designed for the future.
+              ElevateX Technologies is a Hospitality Entertainment, IPTV, Casting, Digital Signage Software CMS and Digital Engagement solution provider with
+              main focus of Hospitality, Healthcare, Education, Banking and Corporate sectors. We're more than just a vendor;
+              with strategic partnership with Uniguest – a global leader and trusted provider in the domain,
+              we work closely with our customers to develop a customized entertainment & Information ecosystem tailored to your brand, target audience, and budget.
             </p>
           </div>
         </section>
@@ -63,7 +65,7 @@ const About = () => {
                 Why Businesses <span className="text-gradient">Trust Us</span>
               </h2>
               <p className="text-muted-foreground">
-                From five-star hotel chains to large-scale enterprises, our clients choose us 
+                From five-star hotel chains to large-scale enterprises, our clients choose us
                 because we deliver on our promises — every time.
               </p>
             </div>
@@ -93,7 +95,7 @@ const About = () => {
                   Our <span className="text-gradient">Commitments</span> to You
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  We believe trust is earned through consistent delivery, transparent communication, 
+                  We believe trust is earned through consistent delivery, transparent communication,
                   and unwavering commitment to our clients' success.
                 </p>
               </div>

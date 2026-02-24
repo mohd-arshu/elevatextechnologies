@@ -8,16 +8,49 @@ const CTASection = () => {
     company: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // placeholder submit
-    alert("Thank you! We'll be in touch shortly.");
-    setFormData({ name: "", email: "", company: "", message: "" });
+    setIsSubmitting(true);
+
+    // ==========================================
+    // REPLACE THESE WITH YOUR GOOGLE FORM DETAILS
+    const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdTRGO1elYJBUCjKJJWtfFvkLcb0-fZEGX_zQXdSTuNuSOmrw/formResponse";
+
+    // Replace these numbers with your form's specific entry IDs
+    const ENTRY_NAME = "entry.389148342";
+    const ENTRY_EMAIL = "entry.2081263940";
+    const ENTRY_COMPANY = "entry.520398248";
+    const ENTRY_MESSAGE = "entry.1604518262";
+    // ==========================================
+
+    const submitData = new URLSearchParams();
+    submitData.append(ENTRY_NAME, formData.name);
+    submitData.append(ENTRY_EMAIL, formData.email);
+    submitData.append(ENTRY_COMPANY, formData.company);
+    submitData.append(ENTRY_MESSAGE, formData.message);
+
+    try {
+      await fetch(GOOGLE_FORM_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: submitData
+      });
+      alert("Thank you! We will get back to you soon.");
+      setFormData({ name: "", email: "", company: "", message: "" });
+    } catch (error) {
+      alert("Something went wrong. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -47,9 +80,9 @@ const CTASection = () => {
             {/* Contact details */}
             <div className="space-y-4">
               {[
-                { icon: Mail, label: "Email Us", value: "hello@elevatex.io" },
-                { icon: Phone, label: "Call Us", value: "+1 (800) 555-0198" },
-                { icon: MapPin, label: "Headquarters", value: "San Francisco, CA · Dubai · Singapore" },
+                { icon: Mail, label: "Email Us", value: "support@elevatextech.com" },
+                { icon: Phone, label: "Call Us", value: "+971 54 448 0182" },
+                { icon: MapPin, label: "Headquarters", value: "113,A3:Silicon Oasis, Dubai, UAE" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
@@ -141,10 +174,11 @@ const CTASection = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-elevated hover:opacity-90 transition-all hover:scale-[1.01]"
+                disabled={isSubmitting}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-elevated hover:opacity-90 transition-all hover:scale-[1.01] disabled:opacity-70 disabled:hover:scale-100"
               >
-                Request Your Free Demo
-                <ArrowRight className="w-4 h-4" />
+                {isSubmitting ? "Submitting..." : "Request Your Free Demo"}
+                {!isSubmitting && <ArrowRight className="w-4 h-4" />}
               </button>
 
               <p className="text-center text-xs text-muted-foreground">

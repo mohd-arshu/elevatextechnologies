@@ -36,14 +36,13 @@ const useCountUp = (target: number, duration = 2000) => {
 };
 
 const projectStages = [
-{ step: "01", title: "Demo", description: "Live product walkthrough", image: stageDemo },
-{ step: "02", title: "Network Assessment", description: "Infrastructure review", image: stageNetwork },
-{ step: "03", title: "Testing", description: "End-to-end validation", image: stageTesting },
-{ step: "04", title: "Deployment", description: "Go live with support", image: stageDeployment }];
+  { step: "01", title: "Demo", description: "Live product walkthrough", image: stageDemo },
+  { step: "02", title: "Network Assessment", description: "Infrastructure review", image: stageNetwork },
+  { step: "03", title: "Testing", description: "End-to-end validation", image: stageTesting },
+  { step: "04", title: "Deployment", description: "Go live with support", image: stageDeployment }];
 
 
 const HeroSection = () => {
-  const badges = ["99.9% Uptime SLA", "4K Ultra HD Streaming", "Global CDN"];
   const { count: screenCount, ref: screenRef } = useCountUp(10000, 2500);
   const { count: projectCount, ref: projectRef } = useCountUp(30, 2000);
 
@@ -51,35 +50,23 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden hero-bg pt-20">
       {/* Subtle pattern */}
       <div className="absolute inset-0 opacity-30 pointer-events-none"
-      style={{ backgroundImage: "radial-gradient(hsl(45 95% 50% / 0.06) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        style={{ backgroundImage: "radial-gradient(hsl(45 95% 50% / 0.06) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
 
 
       <div className="container mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Copy */}
           <div className="space-y-8 animate-fade-up">
-            <h1 className="font-display text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight">
-              The Future of{" "}
-              <span className="text-gradient">IPTV</span> &{" "}
-              <span className="text-gradient">Digital</span>{" "}
-              Signage
+            <h1 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight">
+              Delivering Premium <span className="text-gradient">Guest Enhancement</span> Solutions via{" "}
+              <span className="text-gradient">IPTV</span> &  <span className="text-gradient">Digital Signage</span>
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Transform your hospitality and enterprise spaces with seamless live TV, 
-              on-demand content, and intelligent digital signage — all managed from a 
+              Transform your hospitality and enterprise spaces with seamless live TV,
+              on-demand content, and intelligent digital signage — all managed from a
               single cloud platform. Trusted by hotels, operators, and broadcasters worldwide.
             </p>
-
-            {/* Feature badges */}
-            <div className="flex flex-wrap gap-3">
-              {badges.map((badge) => (
-                <span key={badge} className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full border border-border bg-card">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
-                  {badge}
-                </span>
-              ))}
-            </div>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 pt-2">
@@ -148,7 +135,7 @@ const HeroSection = () => {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {projectStages.map((stage, i) =>
-            <div key={stage.step} className="relative text-center space-y-3 group">
+              <div key={stage.step} className="relative text-center space-y-3 group">
                 <div className="w-16 h-16 mx-auto rounded-xl overflow-hidden border border-border/50 bg-card shadow-sm group-hover:shadow-elevated transition-shadow">
                   <img src={stage.image} alt={stage.title} className="w-full h-full object-cover" />
                 </div>
@@ -158,8 +145,8 @@ const HeroSection = () => {
                   <p className="text-xs text-muted-foreground mt-1">{stage.description}</p>
                 </div>
                 {i < projectStages.length - 1 &&
-              <div className="hidden md:block absolute top-8 -right-3 w-6 h-px bg-border" />
-              }
+                  <div className="hidden md:block absolute top-8 -right-3 w-6 h-px bg-border" />
+                }
               </div>
             )}
           </div>

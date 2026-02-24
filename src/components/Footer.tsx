@@ -18,7 +18,7 @@ const Footer = () => {
               Elevate<span className="text-gradient">X Technologies</span>
             </span>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Enterprise cloud infrastructure for IPTV and digital signage — 
+              Enterprise cloud infrastructure for IPTV and digital signage —
               delivering media experiences that scale.
             </p>
             {/* Social */}
