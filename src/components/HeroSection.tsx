@@ -36,11 +36,11 @@ const useCountUp = (target: number, duration = 2000) => {
 };
 
 const projectStages = [
-  { step: "01", title: "Demo", description: "Live product walkthrough", image: stageDemo },
-  { step: "02", title: "Network Assessment", description: "Infrastructure review", image: stageNetwork },
-  { step: "03", title: "Testing", description: "End-to-end validation", image: stageTesting },
-  { step: "04", title: "Deployment", description: "Go live with support", image: stageDeployment },
-];
+{ step: "01", title: "Demo", description: "Live product walkthrough", image: stageDemo },
+{ step: "02", title: "Network Assessment", description: "Infrastructure review", image: stageNetwork },
+{ step: "03", title: "Testing", description: "End-to-end validation", image: stageTesting },
+{ step: "04", title: "Deployment", description: "Go live with support", image: stageDeployment }];
+
 
 const HeroSection = () => {
   const badges = ["99.9% Uptime SLA", "4K Ultra HD Streaming", "Global CDN"];
@@ -51,8 +51,8 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden hero-bg pt-20">
       {/* Subtle pattern */}
       <div className="absolute inset-0 opacity-30 pointer-events-none"
-        style={{ backgroundImage: "radial-gradient(hsl(45 95% 50% / 0.06) 1px, transparent 1px)", backgroundSize: "40px 40px" }}
-      />
+      style={{ backgroundImage: "radial-gradient(hsl(45 95% 50% / 0.06) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+
 
       <div className="container mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -73,27 +73,27 @@ const HeroSection = () => {
 
             {/* Feature badges */}
             <div className="flex flex-wrap gap-3">
-              {badges.map((badge) => (
-                <div key={badge} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                  {badge}
-                </div>
-              ))}
+              {badges.map((badge) => {}
+
+
+
+
+              )}
             </div>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 pt-2">
               <a
                 href="#contact"
-                className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-elevated hover:opacity-90 transition-all hover:scale-105"
-              >
+                className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-elevated hover:opacity-90 transition-all hover:scale-105">
+
                 Book Your Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="#features"
-                className="flex items-center gap-2 px-6 py-3.5 rounded-xl border border-border bg-secondary/50 hover:bg-secondary text-foreground font-semibold text-sm transition-all"
-              >
+                className="flex items-center gap-2 px-6 py-3.5 rounded-xl border border-border bg-secondary/50 hover:bg-secondary text-foreground font-semibold text-sm transition-all">
+
                 <Play className="w-4 h-4 text-primary" />
                 See How It Works
               </a>
@@ -106,8 +106,8 @@ const HeroSection = () => {
               <img
                 src={heroBanner}
                 alt="Cloud IPTV and Digital Signage Platform"
-                className="w-full h-[420px] object-cover"
-              />
+                className="w-full h-[420px] object-cover" />
+
               {/* Glass overlay badge */}
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-background/80 backdrop-blur-xl rounded-xl p-4 border border-border/50 flex items-center gap-4">
@@ -147,8 +147,8 @@ const HeroSection = () => {
             Your Journey With Us
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {projectStages.map((stage, i) => (
-              <div key={stage.step} className="relative text-center space-y-3 group">
+            {projectStages.map((stage, i) =>
+            <div key={stage.step} className="relative text-center space-y-3 group">
                 <div className="w-16 h-16 mx-auto rounded-xl overflow-hidden border border-border/50 bg-card shadow-sm group-hover:shadow-elevated transition-shadow">
                   <img src={stage.image} alt={stage.title} className="w-full h-full object-cover" />
                 </div>
@@ -157,16 +157,16 @@ const HeroSection = () => {
                   <h4 className="font-display text-sm font-semibold mt-0.5">{stage.title}</h4>
                   <p className="text-xs text-muted-foreground mt-1">{stage.description}</p>
                 </div>
-                {i < projectStages.length - 1 && (
-                  <div className="hidden md:block absolute top-8 -right-3 w-6 h-px bg-border" />
-                )}
+                {i < projectStages.length - 1 &&
+              <div className="hidden md:block absolute top-8 -right-3 w-6 h-px bg-border" />
+              }
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
