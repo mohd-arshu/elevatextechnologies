@@ -73,12 +73,12 @@ const HeroSection = () => {
 
             {/* Feature badges */}
             <div className="flex flex-wrap gap-3">
-              {badges.map((badge) => {}
-
-
-
-
-              )}
+              {badges.map((badge) => (
+                <span key={badge} className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full border border-border bg-card">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
+                  {badge}
+                </span>
+              ))}
             </div>
 
             {/* CTAs */}
