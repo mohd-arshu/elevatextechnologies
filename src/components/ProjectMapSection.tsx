@@ -90,8 +90,8 @@ const MapChart = memo(({ active, setActive }: { active: string | null; setActive
                     fill: isActive
                       ? "hsl(45, 95%, 50%)"
                       : isHighlighted
-                      ? "hsl(45, 80%, 60%)"
-                      : "hsl(45, 10%, 90%)",
+                        ? "hsl(45, 80%, 60%)"
+                        : "hsl(45, 10%, 90%)",
                     stroke: isHighlighted ? "hsl(40, 60%, 50%)" : "hsl(45, 15%, 82%)",
                     strokeWidth: isHighlighted ? 0.8 : 0.3,
                     outline: "none",
@@ -187,7 +187,7 @@ const ProjectMapSection = () => {
 
         <div className="grid lg:grid-cols-[1fr_300px] gap-8 items-start">
           {/* Map */}
-          <div className="relative bg-background rounded-2xl border border-border/50 shadow-sm overflow-hidden" style={{ height: 460 }}>
+          <div className="relative bg-background rounded-2xl border border-border/50 shadow-sm overflow-hidden min-h-[460px] 2xl:min-h-[600px]">
             <MapChart active={active} setActive={setActive} />
 
             {/* Tooltip */}
@@ -222,11 +222,10 @@ const ProjectMapSection = () => {
                 onMouseEnter={() => setActive(c.name)}
                 onMouseLeave={() => setActive(null)}
                 onClick={() => setActive(active === c.name ? null : c.name)}
-                className={`w-full flex items-center justify-between p-3 rounded-xl border transition-all duration-200 text-left ${
-                  active === c.name
+                className={`w-full flex items-center justify-between p-3 rounded-xl border transition-all duration-200 text-left ${active === c.name
                     ? "border-primary bg-primary/5 shadow-sm"
                     : "border-border/50 bg-card hover:border-border"
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-3">
                   <MapPin className={`w-4 h-4 transition-colors ${active === c.name ? "text-primary" : "text-muted-foreground"}`} />

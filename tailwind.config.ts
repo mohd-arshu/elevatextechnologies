@@ -10,9 +10,17 @@ export default {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        "3xl": "1600px",
+        "4xl": "2000px",
+        "5xl": "2400px",
       },
     },
     extend: {
+      screens: {
+        "3xl": "1800px",
+        "4xl": "2200px",
+        "5xl": "2600px",
+      },
       fontFamily: {
         display: ["Space Grotesk", "sans-serif"],
         body: ["Inter", "sans-serif"],

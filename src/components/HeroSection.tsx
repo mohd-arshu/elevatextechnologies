@@ -93,7 +93,7 @@ const HeroSection = () => {
               <img
                 src={heroBanner}
                 alt="Cloud IPTV and Digital Signage Platform"
-                className="w-full h-[420px] object-cover" />
+                className="w-full h-[420px] lg:h-[500px] 2xl:h-[600px] object-cover" />
 
               {/* Glass overlay badge */}
               <div className="absolute bottom-6 left-6 right-6">
