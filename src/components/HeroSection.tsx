@@ -19,6 +19,10 @@ import {
 import signageImg from "@/assets/signageimage.jpg";
 import castingImg from "@/assets/casting.png";
 import iptvImg from "@/assets/hero-banner.jpg";
+import demoImg from "@/assets/stage-demo.png";
+import networkImg from "@/assets/stage-network.png";
+import testingImg from "@/assets/stage-testing.png";
+import deploymentImg from "@/assets/stage-deployment.png";
 
 const useCountUp = (target: number, duration = 2000, start = false) => {
   const [count, setCount] = useState(0);
@@ -42,10 +46,10 @@ const useCountUp = (target: number, duration = 2000, start = false) => {
 };
 
 const projectStages = [
-  { step: "01", title: "Demo", description: "Live product walkthrough", icon: Layout },
-  { step: "02", title: "Assessment", description: "Infrastructure review", icon: Search },
-  { step: "03", title: "Validation", description: "End-to-end testing", icon: ShieldCheck },
-  { step: "04", title: "Launch", description: "Deployment & support", icon: Signal }
+  { step: "01", title: "Demo", description: "Product walkthrough", img: demoImg },
+  { step: "02", title: "Network Requirements", description: "Infrastructure check", img: networkImg },
+  { step: "03", title: "Testing", description: "Validation & QA", img: testingImg },
+  { step: "04", title: "Deployment with Support", description: "Go-live & maintenance", img: deploymentImg }
 ];
 
 
@@ -71,7 +75,7 @@ const HeroSection = () => {
   const regionsCount = useCountUp(6, 2000, isDashboardVisible);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden hero-bg pt-28">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-28">
       {/* Subtle pattern */}
       <div className="absolute inset-0 opacity-30 pointer-events-none"
         style={{ backgroundImage: "radial-gradient(hsl(45 95% 50% / 0.06) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
@@ -189,19 +193,19 @@ const HeroSection = () => {
           <h3 className="font-display text-lg font-semibold text-center mb-8 tracking-tight">
             Your Journey With Us
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {projectStages.map((stage, i) => (
-              <div key={stage.step} className="relative text-center space-y-3 group">
-                <div className="w-16 h-16 mx-auto rounded-xl flex items-center justify-center border border-border/50 bg-card shadow-sm group-hover:border-primary/50 group-hover:bg-primary/5 transition-all">
-                  <stage.icon className="w-7 h-7 text-primary" />
+              <div key={stage.step} className="relative text-center space-y-4 group">
+                <div className="relative w-20 h-20 mx-auto rounded-2xl overflow-hidden border border-border/50 bg-card shadow-sm group-hover:border-primary/50 transition-all">
+                  <img src={stage.img} alt={stage.title} className="w-full h-full object-cover p-2" />
                 </div>
                 <div>
-                  <span className="text-xs font-semibold text-primary">{stage.step}</span>
-                  <h4 className="font-display text-sm font-semibold mt-0.5">{stage.title}</h4>
-                  <p className="text-xs text-muted-foreground mt-1">{stage.description}</p>
+                  <span className="text-[10px] font-bold text-primary uppercase tracking-widest">{stage.step}</span>
+                  <h4 className="font-display text-sm font-bold mt-1 leading-tight">{stage.title}</h4>
+                  <p className="text-[11px] text-muted-foreground mt-1 max-w-[150px] mx-auto">{stage.description}</p>
                 </div>
                 {i < projectStages.length - 1 && (
-                  <div className="hidden md:block absolute top-8 -right-3 w-6 h-px bg-border" />
+                  <div className="hidden lg:block absolute top-10 -right-4 w-8 h-px bg-border/50" />
                 )}
               </div>
             ))}

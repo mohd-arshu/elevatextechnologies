@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ProjectMapSection from "@/components/ProjectMapSection";
-import FeaturesSection from "@/components/FeaturesSection";
 import UseCasesSection from "@/components/UseCasesSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -36,9 +35,6 @@ const Index = () => {
         </div>
         <div className="reveal">
           <ProjectMapSection />
-        </div>
-        <div className="reveal">
-          <FeaturesSection />
         </div>
         <div className="reveal">
           <UseCasesSection />

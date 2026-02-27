@@ -154,7 +154,7 @@ const ProjectMapSection = () => {
   const { count: expandCount, ref: expandRef } = useCountUp(15, 2500);
 
   return (
-    <section className="py-20 bg-card/30 border-y border-border/50" ref={totalRef}>
+    <section className="py-20 bg-background border-y border-border/50" ref={totalRef}>
       <div className="container mx-auto">
         <div className="text-center mb-12 space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold mb-4">
@@ -223,8 +223,8 @@ const ProjectMapSection = () => {
                 onMouseLeave={() => setActive(null)}
                 onClick={() => setActive(active === c.name ? null : c.name)}
                 className={`w-full flex items-center justify-between p-3 rounded-xl border transition-all duration-200 text-left ${active === c.name
-                    ? "border-primary bg-primary/5 shadow-sm"
-                    : "border-border/50 bg-card hover:border-border"
+                  ? "border-primary bg-primary/5 shadow-sm"
+                  : "border-border/50 bg-card hover:border-border"
                   }`}
               >
                 <div className="flex items-center gap-3">

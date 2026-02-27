@@ -40,7 +40,7 @@ const About = () => {
       <Navigation />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-16 hero-bg">
+        <section className="pt-32 pb-16 bg-background">
           <div className="container mx-auto text-center max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium">
               About ElevateX Technologies
