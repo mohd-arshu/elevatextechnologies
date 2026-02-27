@@ -5,6 +5,7 @@ import {
   Geography,
   Marker,
   ZoomableGroup,
+  Line,
 } from "react-simple-maps";
 import { MapPin, Globe, TrendingUp } from "lucide-react";
 
@@ -57,6 +58,11 @@ const countries: CountryData[] = [
 ];
 
 const highlightedNames = new Set(countries.map((c) => c.isoName));
+
+const expansionPaths = [
+  { from: [54.5, 24.0] as [number, number], to: [78.96, 20.59] as [number, number], name: "India" },
+  { from: [54.5, 24.0] as [number, number], to: [69.34, 30.37] as [number, number], name: "Pakistan" },
+];
 
 const MapChart = memo(({ active, setActive }: { active: string | null; setActive: (v: string | null) => void }) => (
   <ComposableMap
@@ -117,7 +123,46 @@ const MapChart = memo(({ active, setActive }: { active: string | null; setActive
         }
       </Geographies>
 
-      {/* Markers with pulse */}
+      {/* Expansion Lines */}
+      {expansionPaths.map((path, i) => (
+        <Line
+          key={i}
+          from={path.from}
+          to={path.to}
+          stroke="hsl(45, 95%, 50%)"
+          strokeWidth={1.5}
+          strokeDasharray="4 4"
+          strokeLinecap="round"
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            from="40"
+            to="0"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="opacity"
+            values="0;1;1;0"
+            keyTimes="0;0.2;0.8;1"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+        </Line>
+      ))}
+
+      {/* Expansion Markers */}
+      {expansionPaths.map((path, i) => (
+        <Marker key={`exp-${i}`} coordinates={path.to}>
+          <circle r={3} fill="hsl(45, 95%, 50%)" opacity={0.6}>
+            <animate attributeName="r" from="2" to="6" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" from="0.6" to="0" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle r={2} fill="hsl(45, 95%, 50%)" />
+        </Marker>
+      ))}
+
+      {/* Active Region Markers */}
       {countries.map((c) => (
         <Marker
           key={c.name}
@@ -126,6 +171,12 @@ const MapChart = memo(({ active, setActive }: { active: string | null; setActive
           onMouseLeave={() => setActive(null)}
           onClick={() => setActive(active === c.name ? null : c.name)}
         >
+          {/* Constant pulse for all markers */}
+          <circle r={8} fill="hsl(45, 95%, 50%)" opacity={0.2}>
+            <animate attributeName="r" from="4" to="12" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="opacity" from="0.2" to="0" dur="3s" repeatCount="indefinite" />
+          </circle>
+
           {active === c.name && (
             <circle r={12} fill="none" stroke="hsl(45, 95%, 50%)" strokeWidth={1} opacity={0.4}>
               <animate attributeName="r" from="6" to="20" dur="1.2s" repeatCount="indefinite" />
