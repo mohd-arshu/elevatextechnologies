@@ -21,11 +21,11 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-elevated"
-        : "bg-transparent"
+        ? "bg-background/95 backdrop-blur-2xl border-b border-border/50 shadow-elevated py-2"
+        : "bg-background/40 backdrop-blur-md py-4"
         }`}
     >
-      <div className="container mx-auto flex items-center justify-between py-4">
+      <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
           <span className="font-display text-xl font-bold tracking-tight">

@@ -1,57 +1,80 @@
 import { useState, useEffect, useRef } from "react";
-import heroBanner from "@/assets/hero-banner.jpg";
-import stageDemo from "@/assets/stage-demo.png";
-import stageNetwork from "@/assets/stage-network.png";
-import stageTesting from "@/assets/stage-testing.png";
-import stageDeployment from "@/assets/stage-deployment.png";
-import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  Play,
+  CheckCircle2,
+  Tv,
+  Layout,
+  Search,
+  Activity,
+  ShieldCheck,
+  Settings,
+  Signal,
+  Layers,
+  Globe,
+  MonitorSmartphone,
+  Tv2,
+  Cast
+} from "lucide-react";
+import signageImg from "@/assets/signageimage.jpg";
+import castingImg from "@/assets/casting.png";
+import iptvImg from "@/assets/hero-banner.jpg";
 
-const useCountUp = (target: number, duration = 2000) => {
+const useCountUp = (target: number, duration = 2000, start = false) => {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (start && !hasAnimated.current) {
+      hasAnimated.current = true;
+      const startTime = performance.now();
+      const step = (now: number) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(eased * target));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+  }, [target, duration, start]);
+
+  return count;
+};
+
+const projectStages = [
+  { step: "01", title: "Demo", description: "Live product walkthrough", icon: Layout },
+  { step: "02", title: "Assessment", description: "Infrastructure review", icon: Search },
+  { step: "03", title: "Validation", description: "End-to-end testing", icon: ShieldCheck },
+  { step: "04", title: "Launch", description: "Deployment & support", icon: Signal }
+];
+
+
+const HeroSection = () => {
+  const [isDashboardVisible, setIsDashboardVisible] = useState(false);
+  const dashboardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          const start = performance.now();
-          const step = (now: number) => {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.floor(eased * target));
-            if (progress < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
+        if (entry.isIntersecting) {
+          setIsDashboardVisible(true);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
-    if (ref.current) observer.observe(ref.current);
+    if (dashboardRef.current) observer.observe(dashboardRef.current);
     return () => observer.disconnect();
-  }, [target, duration]);
+  }, []);
 
-  return { count, ref };
-};
-
-const projectStages = [
-  { step: "01", title: "Demo", description: "Live product walkthrough", image: stageDemo },
-  { step: "02", title: "Network Assessment", description: "Infrastructure review", image: stageNetwork },
-  { step: "03", title: "Testing", description: "End-to-end validation", image: stageTesting },
-  { step: "04", title: "Deployment", description: "Go live with support", image: stageDeployment }];
-
-
-const HeroSection = () => {
-  const { count: screenCount, ref: screenRef } = useCountUp(10000, 2500);
-  const { count: projectCount, ref: projectRef } = useCountUp(30, 2000);
+  const signageCount = useCountUp(300, 2000, isDashboardVisible);
+  const iptvCount = useCountUp(10000, 2500, isDashboardVisible);
+  const regionsCount = useCountUp(6, 2000, isDashboardVisible);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden hero-bg pt-20">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden hero-bg pt-28">
       {/* Subtle pattern */}
       <div className="absolute inset-0 opacity-30 pointer-events-none"
         style={{ backgroundImage: "radial-gradient(hsl(45 95% 50% / 0.06) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
-
 
       <div className="container mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -73,57 +96,90 @@ const HeroSection = () => {
               <a
                 href="#contact"
                 className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-sm shadow-elevated hover:opacity-90 transition-all hover:scale-105">
-
                 Book Your Demo
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="#features"
                 className="flex items-center gap-2 px-6 py-3.5 rounded-xl border border-border bg-secondary/50 hover:bg-secondary text-foreground font-semibold text-sm transition-all">
-
                 <Play className="w-4 h-4 text-primary" />
                 See How It Works
               </a>
             </div>
           </div>
 
-          {/* Right: Hero image */}
-          <div className="relative hidden lg:block">
-            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-elevated">
-              <img
-                src={heroBanner}
-                alt="Cloud IPTV and Digital Signage Platform"
-                className="w-full h-[420px] lg:h-[500px] 2xl:h-[600px] object-cover" />
-
-              {/* Glass overlay badge */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-background/80 backdrop-blur-xl rounded-xl p-4 border border-border/50 flex items-center gap-4">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
-                    <span className="text-xs font-semibold text-foreground">Live Streaming</span>
+          {/* Right: Modern UI Mockup */}
+          <div className="relative hidden lg:block" ref={dashboardRef}>
+            <div className="relative aspect-video rounded-2xl border border-border/50 bg-card overflow-hidden shadow-elevated p-8 flex flex-col gap-6">
+              {/* Fake UI Header */}
+              <div className="flex items-center justify-between border-b border-border/50 pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <Activity className="w-4 h-4 text-primary" />
                   </div>
-                  <div className="w-px h-4 bg-border" />
-                  <div className="flex-1">
-                    <div className="w-full h-1.5 bg-secondary rounded-full overflow-hidden">
-                      <div className="h-full w-3/4 bg-gradient-primary rounded-full" />
-                    </div>
+                  <div>
+                    <div className="text-sm font-bold">Project update</div>
                   </div>
-                  <span className="text-xs text-primary font-semibold">4K HDR</span>
+                </div>
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-destructive/40" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-primary/40" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-primary" />
                 </div>
               </div>
-            </div>
-            {/* Floating stat cards */}
-            <div ref={screenRef} className="absolute -top-6 -right-6 bg-card border border-border rounded-xl p-4 shadow-elevated">
-              <div className="text-2xl font-display font-bold text-gradient">
-                {screenCount >= 10000 ? "10K+" : screenCount.toLocaleString()}
+
+              {/* Fake UI Grid */}
+              <div className="grid grid-cols-2 gap-4 flex-grow relative z-10">
+                {/* Signage Card */}
+                <div className="relative rounded-xl border border-border/50 bg-background/40 p-4 space-y-3 overflow-hidden group/card shadow-sm hover:shadow-md transition-all">
+                  <img src={signageImg} alt="Signage" className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover/card:opacity-20 transition-opacity" />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-2 mb-1">
+                      <MonitorSmartphone className="w-3.5 h-3.5 text-primary" />
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Signage Screens</div>
+                    </div>
+                    <div className="text-3xl font-display font-bold">{signageCount}+</div>
+                  </div>
+                </div>
+
+                {/* IPTV Card */}
+                <div className="relative rounded-xl border border-border/50 bg-background/40 p-4 space-y-3 overflow-hidden group/card shadow-sm hover:shadow-md transition-all">
+                  <img src={iptvImg} alt="IPTV" className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover/card:opacity-20 transition-opacity" />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Tv2 className="w-3.5 h-3.5 text-primary" />
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">IPTV Screens</div>
+                    </div>
+                    <div className="text-3xl font-display font-bold text-gradient">{iptvCount >= 10000 ? "10K+" : iptvCount.toLocaleString()}</div>
+                  </div>
+                </div>
+
+                {/* Regions and Casting Card */}
+                <div className="col-span-2 relative rounded-xl border border-border/50 bg-background/40 p-4 flex items-center justify-between overflow-hidden group/card shadow-sm hover:shadow-md transition-all">
+                  <img src={castingImg} alt="Casting" className="absolute inset-0 w-full h-full object-cover opacity-5 group-hover/card:opacity-10 transition-opacity" />
+                  <div className="relative z-10 flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Globe className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold">Active Regions</div>
+                      <div className="text-[10px] text-muted-foreground">GCC & North Africa ({regionsCount} Countries)</div>
+                    </div>
+                  </div>
+                  <div className="relative z-10 flex items-center gap-3">
+                    <div className="text-right">
+                      <div className="text-[10px] font-bold">Secure Casting</div>
+                      <div className="text-[9px] text-primary">Active Now</div>
+                    </div>
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center animate-pulse">
+                      <Cast className="w-4 h-4 text-primary" />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="text-xs text-muted-foreground mt-0.5">Screens Deployed</div>
-            </div>
-            <div ref={projectRef} className="absolute -bottom-6 -left-6 bg-card border border-border rounded-xl p-4 shadow-elevated">
-              <div className="text-2xl font-display font-bold text-gradient">
-                {projectCount >= 30 ? "30+" : projectCount.toString()}
-              </div>
-              <div className="text-xs text-muted-foreground mt-0.5">Projects Completed</div>
+
+              {/* Bottom Decoration */}
+              <div className="absolute -bottom-1 -left-1 -right-1 h-32 bg-gradient-to-t from-card via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
@@ -134,26 +190,26 @@ const HeroSection = () => {
             Your Journey With Us
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {projectStages.map((stage, i) =>
+            {projectStages.map((stage, i) => (
               <div key={stage.step} className="relative text-center space-y-3 group">
-                <div className="w-16 h-16 mx-auto rounded-xl overflow-hidden border border-border/50 bg-card shadow-sm group-hover:shadow-elevated transition-shadow">
-                  <img src={stage.image} alt={stage.title} className="w-full h-full object-cover" />
+                <div className="w-16 h-16 mx-auto rounded-xl flex items-center justify-center border border-border/50 bg-card shadow-sm group-hover:border-primary/50 group-hover:bg-primary/5 transition-all">
+                  <stage.icon className="w-7 h-7 text-primary" />
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-primary">{stage.step}</span>
                   <h4 className="font-display text-sm font-semibold mt-0.5">{stage.title}</h4>
                   <p className="text-xs text-muted-foreground mt-1">{stage.description}</p>
                 </div>
-                {i < projectStages.length - 1 &&
+                {i < projectStages.length - 1 && (
                   <div className="hidden md:block absolute top-8 -right-3 w-6 h-px bg-border" />
-                }
+                )}
               </div>
-            )}
+            ))}
           </div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default HeroSection;
