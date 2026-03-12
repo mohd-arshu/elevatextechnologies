@@ -23,10 +23,16 @@ const Footer = () => {
             </p>
             {/* Social */}
             <div className="flex items-center gap-3 pt-2">
-              {[Twitter, Linkedin, Youtube].map((Icon, i) => (
+              {[
+                { Icon: Twitter, href: "#" },
+                { Icon: Linkedin, href: "https://www.linkedin.com/company/elevatex-technologies-fzco/" },
+                { Icon: Youtube, href: "#" }
+              ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
                 >
                   <Icon className="w-4 h-4" />

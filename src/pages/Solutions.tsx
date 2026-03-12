@@ -54,7 +54,8 @@ const Solutions = () => {
                             {solutions.map((solution, index) => (
                                 <div
                                     key={solution.title}
-                                    className="group rounded-2xl border border-border/50 bg-card overflow-hidden shadow-sm hover:shadow-elevated transition-all duration-300 animate-fade-up"
+                                    id={solution.title.toLowerCase().replace(/\s+/g, '-').replace("digital-signage", "signage").replace("interactive-kiosk", "kiosk")}
+                                    className="group rounded-2xl border border-border/50 bg-card overflow-hidden shadow-sm hover:shadow-elevated transition-all duration-300 animate-fade-up scroll-mt-24"
                                     style={{ animationDelay: `${index * 100}ms` }}
                                 >
                                     <div className="aspect-video overflow-hidden relative">
