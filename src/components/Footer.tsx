@@ -26,7 +26,7 @@ const Footer = () => {
               {[
                 { Icon: Twitter, href: "#" },
                 { Icon: Linkedin, href: "https://www.linkedin.com/company/elevatex-technologies-fzco/" },
-                { Icon: Youtube, href: "#" }
+                { Icon: Youtube, href: "https://www.youtube.com/@uniguest" }
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
